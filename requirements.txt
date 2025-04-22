@@ -1,0 +1,9 @@
+# -- API --
+fastapi
+uvicorn
+
+# -- Integração com IA --
+#openai
+#transformers
+google-generativeai
+werkzeug

@@ -4,7 +4,7 @@ from ai_connectors.ai_connector import AiConnector
 
 
 genai.configure(api_key=os.environ["GOOGLEAI_API_KEY"])
-MODEL = "gemini-1.5-flash"
+MODEL = "gemini-2.5-flash"
 
 
 class GoogleAiCoonnector(AiConnector):

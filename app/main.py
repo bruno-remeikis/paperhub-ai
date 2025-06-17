@@ -2,9 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import traceback
 
+from models.requests.AskRequest import AskRequest
 import ai_service as ai
-
-from pydantic import BaseModel
 
 
 # Inicia API
@@ -33,11 +32,19 @@ async def index():
     return { "message": "API is running..." }
 
 
-class Document(BaseModel):
-    content: str
+# class Document(BaseModel):
+#     content: str
+#
+#
+# @app.post('/refs')
+# async def refs(doc: Document):
+#     #return doc.content
+#     return ai.ask(doc.content)
 
 
-@app.post('/refs')
-async def refs(doc: Document):
-    #return doc.content
-    return ai.ask(doc.content)
+
+
+@app.post('/ask')
+async def ask(req: AskRequest):
+    res = ai.ask(req)
+    return res

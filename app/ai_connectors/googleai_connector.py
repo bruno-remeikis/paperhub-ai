@@ -4,10 +4,17 @@ from ai_connectors.ai_connector import AiConnector
 
 
 genai.configure(api_key=os.environ["GOOGLEAI_API_KEY"])
-model = genai.GenerativeModel("gemini-1.5-flash")
+MODEL = "gemini-1.5-flash"
 
 
 class GoogleAiCoonnector(AiConnector):
+    def __init__(self, agent: str = None):
+        self.model = genai.GenerativeModel(
+            MODEL,
+            system_instruction = agent,
+            generation_config = {"response_mime_type": "application/json"}
+        )
+
     def ask(self, prompt: str) -> str:
-        response = model.generate_content(prompt)
+        response = self.model.generate_content(prompt)
         return response.text

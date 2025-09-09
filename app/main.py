@@ -32,18 +32,6 @@ async def index():
     return { "message": "API is running..." }
 
 
-# class Document(BaseModel):
-#     content: str
-#
-#
-# @app.post('/refs')
-# async def refs(doc: Document):
-#     #return doc.content
-#     return ai.ask(doc.content)
-
-
-
-
 @app.post('/ask')
 async def ask(req: AskRequest):
     res = ai.ask(req)

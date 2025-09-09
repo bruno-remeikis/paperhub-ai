@@ -5,5 +5,9 @@ uvicorn
 # -- Integração com IA --
 #openai
 #transformers
-google-generativeai
+# google-generativeai
+google-genai
 werkzeug
+# Agno
+agno
+google-genai

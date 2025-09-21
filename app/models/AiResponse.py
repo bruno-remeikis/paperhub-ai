@@ -1,14 +1,13 @@
 from typing import List, Optional
+from pydantic import BaseModel
 
-from dataclasses import dataclass
 
-@dataclass
-class Suggestion:
+class Suggestion(BaseModel):
     change: str
     explanation: str
 
-@dataclass
-class AiResponse:
+
+class AiResponse(BaseModel):
     suggestions: List[Suggestion]
     answer: str
     modifiedDocument: Optional[str]

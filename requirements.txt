@@ -2,12 +2,9 @@
 fastapi
 uvicorn
 
-# -- Integração com IA --
-#openai
-#transformers
-# google-generativeai
+# -- Integração com IA (Agno) --
+agno==2.0.4
+## Models
 google-genai
-werkzeug
-# Agno
-agno
-google-genai
+## Databases
+sqlalchemy

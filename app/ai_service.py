@@ -1,9 +1,11 @@
+import os
+
 from agno.agent import Agent
 from agno.models.google import Gemini
 # from agno.knowledge.knowledge import Knowledge
 from agno.db.sqlite import SqliteDb
 # from agno.db.postgres.postgres import PostgresDb
-from agno.vectordb.pgvector import PgVector
+# from agno.vectordb.pgvector import PgVector
 
 
 # from agno.tools.postgres import PostgresTools
@@ -32,8 +34,10 @@ db = SqliteDb(
 #     # ),
 # )
 
+google_api_key = os.environ['GOOGLEAI_API_KEY']
+
 agent = Agent(
-    model=Gemini(id="gemini-2.5-pro", api_key='AIzaSyDtJ5cHO87nH_2AxWpqk-KEV68k3UpbKGw'),
+    model=Gemini(id="gemini-2.5-pro", api_key=google_api_key),
     instructions=load_instructions('instructions/main-agent.md'),
     
     # Database

@@ -21,18 +21,15 @@ app.add_middleware(
 
 def buildErrorResponse(e: Exception):
     traceback.print_exc()
-    return {
-        'status': 'error',
-        'error': str(e)
-    }
+    return {"status": "error", "error": str(e)}
 
 
-@app.get('/')
+@app.get("/")
 async def index():
-    return { "message": "API is running..." }
+    return {"message": "API is running..."}
 
 
-@app.post('/ask')
+@app.post("/ask")
 async def ask(req: AskRequest):
     res = ai.ask(req)
     return res

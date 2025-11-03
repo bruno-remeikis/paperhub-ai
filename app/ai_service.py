@@ -4,9 +4,11 @@ from agno.agent import Agent
 from agno.models.google import Gemini
 from agno.db.sqlite import SqliteDb
 
+from app.config import get_settings
 from app.models.AiResponse import AiResponse
 from app.models.requests.AskRequest import AskRequest
 
+app_settings = get_settings()
 
 def load_instructions(file_path):
     # Convert relative path to absolute path based on this file's location
@@ -22,10 +24,8 @@ db = SqliteDb(
 )
 
 
-google_api_key = os.getenv("GOOGLE_API_KEY")
-
 agent = Agent(
-    model=Gemini(id="gemini-2.5-pro", api_key=google_api_key),
+    model=Gemini(id="gemini-2.5-pro", api_key=app_settings.GOOGLEAI_API_KEY),
     instructions=load_instructions("instructions/main-agent.md"),  # Removed leading './'
     # Database
     db=db,

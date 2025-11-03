@@ -1,9 +1,7 @@
 # -- API --
 fastapi[standard]>=0.120.0
-
-# -- Integração com IA (Agno) --
+pydantic-settings
 agno>=2.2.6
-## Models
+python-dotenv
 google-genai
-## Databases
 sqlalchemy

@@ -1,8 +1,11 @@
+from dotenv import load_dotenv
 from fastapi import FastAPI
 
 from app.config import routes
 
 from fastapi.middleware.cors import CORSMiddleware
+
+load_dotenv()
 
 ALLOWED_ORIGINS = ["http://localhost:3100", "https://localhost:3000", "https://paperhub.com.br"]
 

@@ -4,15 +4,17 @@ from agno.agent import Agent
 from agno.models.google import Gemini
 from agno.db.sqlite import SqliteDb
 
-
-from models.requests.AskRequest import AskRequest
-from models.AiResponse import AiResponse
+from app.models.AiResponse import AiResponse
+from app.models.requests.AskRequest import AskRequest
 
 
 def load_instructions(file_path):
-    with open(file_path, "r", encoding="utf-8") as file:
+    # Convert relative path to absolute path based on this file's location
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    absolute_path = os.path.join(base_dir, file_path)
+    
+    with open(absolute_path, "r", encoding="utf-8") as file:
         return file.read()
-
 
 db = SqliteDb(
     db_file="temp/agno_app.db",
@@ -20,12 +22,11 @@ db = SqliteDb(
 )
 
 
-google_api_key = os.environ['GOOGLEAI_API_KEY']
+google_api_key = "AIzaSyD4o8ry2Zogelvbjgy99x7ux5BXlTLwgK4"
 
 agent = Agent(
     model=Gemini(id="gemini-2.5-pro", api_key=google_api_key),
-    instructions=load_instructions('instructions/main-agent.md'),
-    
+    instructions=load_instructions("instructions/main-agent.md"),  # Removed leading './'
     # Database
     db=db,
     # History
@@ -41,4 +42,3 @@ agent = Agent(
 def ask(req: AskRequest):
     res = agent.run(req.model_dump_json())
     return res.content
-

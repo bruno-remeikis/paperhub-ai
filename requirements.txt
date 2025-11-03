@@ -1,9 +1,8 @@
 # -- API --
-fastapi
-uvicorn
+fastapi[standard]>=0.120.0
 
 # -- Integração com IA (Agno) --
-agno==2.0.4
+agno>=2.2.6
 ## Models
 google-genai
 ## Databases

@@ -4,10 +4,7 @@ from app.config import routes
 
 from fastapi.middleware.cors import CORSMiddleware
 
-ALLOWED_ORIGINS = [
-    "http://localhost",
-    "https://paperhub.com.br"
-]
+ALLOWED_ORIGINS = ["http://localhost:3100", "https://localhost:3000", "https://paperhub.com.br"]
 
 def create_app():
     app = FastAPI()

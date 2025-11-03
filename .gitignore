@@ -2,6 +2,7 @@ __pycache__
 .env
 app/tempfiles
 app/temp
+temp
 venv
 .venv
 .idea

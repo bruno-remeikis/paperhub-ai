@@ -22,7 +22,7 @@ db = SqliteDb(
 )
 
 
-google_api_key = "AIzaSyD4o8ry2Zogelvbjgy99x7ux5BXlTLwgK4"
+google_api_key = os.getenv("GOOGLE_API_KEY")
 
 agent = Agent(
     model=Gemini(id="gemini-2.5-pro", api_key=google_api_key),
